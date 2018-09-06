@@ -85,7 +85,9 @@ It seems the build failed. revert everything by running the following:
 write-host @"
 Now running the app so you can test it.
 "@ -f green
-start-process dotnet $("run", "-p", "src")
+cd src
+start-process dotnet $("watch", "run")
+cd ..
 read-host "When done, press enter to commit all"
 git add .
 git commit -m "Initial commit for $sampleName"
