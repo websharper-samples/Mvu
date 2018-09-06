@@ -1,0 +1,6 @@
+src/bin/*
+src/obj/*
+src/wwwroot/Content/*
+*.suo
+.vs/
+.vscode/
