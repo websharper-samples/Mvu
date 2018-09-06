@@ -1,19 +1,26 @@
 param (
     [switch] $update,
     [switch] $useDaily,
-    [switch] $commit
+    [switch] $commitPackageUpdate
 )
 
-if ($update) {
+if ($useDaily) {
+    $from = '<add key="daily.websharper.com" value="true" />'
+    $to = '<add key="daily.websharper.com" value="false" />'
+    (get-content NuGet.config) -replace $from, $to | set-content NuGet.config
+}
 
-    if ($useDaily) {
-        $from = '<add key="daily.websharper.com" value="true" />'
-        $to = '<add key="daily.websharper.com" value="false" />'
-        (get-content NuGet.config) -replace $from, $to | set-content NuGet.config
-    }
+if ($update) {
 
     dotnet add src package WebSharper
     dotnet add src package WebSharper.FSharp
 @dotnet-update@}
 
 dotnet build src
+if ($lastexitcode -ne 0) { exit $lastexitcode }
+
+if ($commitPackageUpdate) {
+    git add src/*.*proj
+    git commit -m 'Update packages'
+    git push origin master
+}
