@@ -29,7 +29,7 @@ if ($extensionName -eq '') {
 
 function sed {
     param([string] $file, [string] $in, [string] $out)
-    (get-content $file) -replace $in, $out | set-content $file
+    (get-content -raw $file) -replace $in, $out | set-content -nonewline $file
 }
 
 $repo = "https://github.com/websharper-samples/$sampleName"
