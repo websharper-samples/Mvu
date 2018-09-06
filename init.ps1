@@ -89,6 +89,7 @@ start-process dotnet $("run", "-p", "src")
 read-host "When done, press enter to commit all"
 git add .
 git commit -m "Initial commit for $sampleName"
+git fetch origin gh-pages:gh-pages
 write-host @"
 Committed, You can now push:
     git remote set-url origin $repo
