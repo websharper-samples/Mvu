@@ -14,7 +14,9 @@ if ($update) {
 
     dotnet add src package WebSharper
     dotnet add src package WebSharper.FSharp
-@dotnet-update@}
+    dotnet add src package WebSharper.Mvu
+    dotnet add src package WebSharper.UI
+}
 
 dotnet build src
 if ($lastexitcode -ne 0) { exit $lastexitcode }
