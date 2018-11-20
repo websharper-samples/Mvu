@@ -1151,13 +1151,13 @@ var n=r(30),o=r(29),i=r(28);function s(){return c.TYPED_ARRAY_SUPPORT?2147483647
  };
  Entry.Update=function(msg,e)
  {
-  var o,o$1;
+  var o;
   return msg.$==1?{
    $:1,
-   $0:Model$1.New(e.Id,e.Task,e.IsCompleted,(o=e.Editing,o==null?{
+   $0:Model$1.New(e.Id,e.Task,e.IsCompleted,{
     $:1,
     $0:e.Task
-   }:o))
+   })
   }:msg.$==2?{
    $:1,
    $0:Model$1.New(e.Id,e.Task,e.IsCompleted,{
@@ -1166,7 +1166,7 @@ var n=r(30),o=r(29),i=r(28);function s(){return c.TYPED_ARRAY_SUPPORT?2147483647
    })
   }:msg.$==3?{
    $:1,
-   $0:Model$1.New(e.Id,(o$1=e.Editing,o$1==null?e.Task:o$1.$0),e.IsCompleted,null)
+   $0:Model$1.New(e.Id,(o=e.Editing,o==null?e.Task:o.$0),e.IsCompleted,null)
   }:msg.$==4?{
    $:1,
    $0:Model$1.New(e.Id,e.Task,e.IsCompleted,null)
