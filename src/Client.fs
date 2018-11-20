@@ -60,7 +60,7 @@ module Entry =
         | Remove ->
             None
         | StartEdit ->
-            Some { e with Editing = e.Editing |> Option.orElse (Some e.Task) }
+            Some { e with Editing = Some e.Task }
         | Edit value ->
             Some { e with Editing = Some value }
         | CommitEdit ->
