@@ -24,7 +24,7 @@
             <input ws-var="Task" ws-onkeydown="Edit" class="new-todo" placeholder="What needs to be done?" autofocus>
         </header>
         <section class="main">
-            <input ws-var="IsCompleted" class="toggle-all" type="checkbox">
+            <input ws-var="IsCompleted" id="toggle-all" class="toggle-all" type="checkbox">
             <label for="toggle-all">Mark all as complete</label>
             <ul ws-hole="Entries" class="todo-list">
                 <li ws-template="Entry" ws-attr="CssAttrs">
