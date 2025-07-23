@@ -4,3 +4,6 @@ src/wwwroot/Content/*
 *.suo
 .vs/
 .vscode/
+/src/build
+/src/node_modules
+/src/wwwroot/Scripts
