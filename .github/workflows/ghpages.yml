@@ -1,0 +1,56 @@
+﻿name: Build and Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '8.0.x'
+
+      # - name: Install Paket as a .NET Tool
+      #   run: dotnet tool restore
+
+      # - name: Add credentials for Paket
+      #   run:
+      #     dotnet paket config
+      #       add-credentials https://nuget.pkg.github.com/dotnet-websharper/index.json
+      #       --username intellifactory-gh 
+      #       --password ${{ secrets.PAT_PACKAGE }}
+
+      # - name: Add GitHub registry NuGet source
+      #   run: 
+      #     dotnet nuget 
+      #       add source https://nuget.pkg.github.com/dotnet-websharper/index.json 
+      #       --name github 
+      #       --username intellifactory-gh 
+      #       --password ${{ secrets.PAT_PACKAGE }} 
+      #       --store-password-in-clear-text
+
+      # - name: Restore Dependencies Using Paket
+      #   run: dotnet paket restore
+
+      - name: Build WebSharper Project
+        run: dotnet build src/Mvu.fsproj --configuration Release
+
+      - name: Prepare Deployment
+        run: |
+          mkdir -p dist
+          cp -r src/wwwroot/* dist/
+
+      - name: Deploy 🚀
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist
