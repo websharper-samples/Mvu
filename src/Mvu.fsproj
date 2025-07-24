@@ -15,12 +15,10 @@
     <Compile Include="Program.fs" />
   </ItemGroup>
 
-  <ItemGroup />
-
   <ItemGroup>
     <PackageReference Include="WebSharper" Version="9.1.4.586" />    
-    <PackageReference Include="WebSharper.FSharp" Version="9.1.4.586" />
-    <PackageReference Include="WebSharper.Mvu" Version="9.1.1.588" />
+    <PackageReference Include="WebSharper.FSharp" Version="9.1.4.586" />    
+    <PackageReference Include="WebSharper.Mvu" Version="9.1.2.589" />
     <PackageReference Include="WebSharper.UI" Version="9.1.4.586" />
   </ItemGroup>
 
